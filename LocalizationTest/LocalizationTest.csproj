@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+    <PropertyGroup>
+        <!-- beauty into sub-directory, default is libs, quote with "" if contains space  -->
+        <BeautyLibsDir>libraries</BeautyLibsDir>
+        <!-- dlls that you don't want to be moved or can not be moved -->
+        <!-- <BeautyExcludes></BeautyExcludes>-->
+        <!-- set to True if you want to disable -->
+        <DisableBeauty>False</DisableBeauty>
+        <ForceBeauty>False</ForceBeauty>
+        <!-- <BeautyAfterTasks></BeautyAfterTasks> -->
+        <!-- set to True if you want to disable -->
+        <DisablePatch>False</DisablePatch>
+        <!-- valid values: Error|Detail|Info -->
+        <BeautyLogLevel>Error</BeautyLogLevel>
+        <!-- set to a repo mirror if you have troble in connecting github -->
+        <!-- <GitCDN>https://gitee.com/liesauer/HostFXRPatcher</GitCDN> -->
+        <!-- <GitTree>master</GitTree> -->
+    </PropertyGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\Resources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <Compile Update="Resources\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Resources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="nulastudio.NetCoreBeauty" Version="1.2.8" />
+    </ItemGroup>
+</Project>
